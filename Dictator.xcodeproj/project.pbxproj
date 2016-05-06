@@ -7,15 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		150720BB1CDC3F1100C3ED34 /* PartyFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150720BA1CDC3F1100C3ED34 /* PartyFormViewController.swift */; };
+		150720BF1CDC40EA00C3ED34 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 150720BC1CDC40EA00C3ED34 /* FBSDKCoreKit.framework */; };
+		150720C01CDC40EA00C3ED34 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 150720BD1CDC40EA00C3ED34 /* FBSDKLoginKit.framework */; };
+		150720C11CDC40EA00C3ED34 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 150720BE1CDC40EA00C3ED34 /* FBSDKShareKit.framework */; };
+		150720C31CDC425000C3ED34 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150720C21CDC425000C3ED34 /* LoginViewController.swift */; };
+		15AC98741CDC4CB900DD9B88 /* DialogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AC98731CDC4CB900DD9B88 /* DialogService.swift */; };
 		15C40E011CDC182600070C13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C40E001CDC182600070C13 /* AppDelegate.swift */; };
 		15C40E031CDC182600070C13 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C40E021CDC182600070C13 /* ViewController.swift */; };
 		15C40E061CDC182600070C13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15C40E041CDC182600070C13 /* Main.storyboard */; };
 		15C40E091CDC182600070C13 /* Dictator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15C40E071CDC182600070C13 /* Dictator.xcdatamodeld */; };
 		15C40E0B1CDC182600070C13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15C40E0A1CDC182600070C13 /* Assets.xcassets */; };
 		15C40E0E1CDC182600070C13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15C40E0C1CDC182600070C13 /* LaunchScreen.storyboard */; };
+		B563DB040A64FFDA4CBABB3F /* Pods_Dictator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CE57312F5D92651BC775B8 /* Pods_Dictator.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13CE57312F5D92651BC775B8 /* Pods_Dictator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dictator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		150720BA1CDC3F1100C3ED34 /* PartyFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartyFormViewController.swift; sourceTree = "<group>"; };
+		150720BC1CDC40EA00C3ED34 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		150720BD1CDC40EA00C3ED34 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		150720BE1CDC40EA00C3ED34 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		150720C21CDC425000C3ED34 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		150720C41CDC433100C3ED34 /* Dictator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dictator-Bridging-Header.h"; sourceTree = "<group>"; };
+		15AC98731CDC4CB900DD9B88 /* DialogService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogService.swift; sourceTree = "<group>"; };
 		15C40DFD1CDC182600070C13 /* Dictator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dictator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15C40E001CDC182600070C13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15C40E021CDC182600070C13 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +39,8 @@
 		15C40E0A1CDC182600070C13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15C40E0D1CDC182600070C13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15C40E0F1CDC182600070C13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D0C6E1755CA3EDFECE89F54 /* Pods-Dictator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dictator.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dictator/Pods-Dictator.release.xcconfig"; sourceTree = "<group>"; };
+		FC85D8FCD2B293CFF80C0783 /* Pods-Dictator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dictator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dictator/Pods-Dictator.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +48,49 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				150720C11CDC40EA00C3ED34 /* FBSDKShareKit.framework in Frameworks */,
+				B563DB040A64FFDA4CBABB3F /* Pods_Dictator.framework in Frameworks */,
+				150720BF1CDC40EA00C3ED34 /* FBSDKCoreKit.framework in Frameworks */,
+				150720C01CDC40EA00C3ED34 /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		150720B91CDC3E1700C3ED34 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				150720BA1CDC3F1100C3ED34 /* PartyFormViewController.swift */,
+				150720C21CDC425000C3ED34 /* LoginViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		15AC98711CDC4C8000DD9B88 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				15AC98721CDC4C8F00DD9B88 /* Services */,
+				150720B91CDC3E1700C3ED34 /* ViewControllers */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		15AC98721CDC4C8F00DD9B88 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				15AC98731CDC4CB900DD9B88 /* DialogService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		15C40DF41CDC182600070C13 = {
 			isa = PBXGroup;
 			children = (
 				15C40DFF1CDC182600070C13 /* Dictator */,
 				15C40DFE1CDC182600070C13 /* Products */,
+				EDB4E45E4D713EB06AB421FE /* Pods */,
+				7DF3E2C05E79536C276FAF81 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +105,37 @@
 		15C40DFF1CDC182600070C13 /* Dictator */ = {
 			isa = PBXGroup;
 			children = (
+				15AC98711CDC4C8000DD9B88 /* Classes */,
 				15C40E001CDC182600070C13 /* AppDelegate.swift */,
 				15C40E021CDC182600070C13 /* ViewController.swift */,
 				15C40E041CDC182600070C13 /* Main.storyboard */,
 				15C40E0A1CDC182600070C13 /* Assets.xcassets */,
 				15C40E0C1CDC182600070C13 /* LaunchScreen.storyboard */,
 				15C40E0F1CDC182600070C13 /* Info.plist */,
+				150720C41CDC433100C3ED34 /* Dictator-Bridging-Header.h */,
 				15C40E071CDC182600070C13 /* Dictator.xcdatamodeld */,
 			);
 			path = Dictator;
+			sourceTree = "<group>";
+		};
+		7DF3E2C05E79536C276FAF81 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				150720BC1CDC40EA00C3ED34 /* FBSDKCoreKit.framework */,
+				150720BD1CDC40EA00C3ED34 /* FBSDKLoginKit.framework */,
+				150720BE1CDC40EA00C3ED34 /* FBSDKShareKit.framework */,
+				13CE57312F5D92651BC775B8 /* Pods_Dictator.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EDB4E45E4D713EB06AB421FE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FC85D8FCD2B293CFF80C0783 /* Pods-Dictator.debug.xcconfig */,
+				9D0C6E1755CA3EDFECE89F54 /* Pods-Dictator.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +145,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 15C40E121CDC182600070C13 /* Build configuration list for PBXNativeTarget "Dictator" */;
 			buildPhases = (
+				F2488769A273E19C1FE402C2 /* Check Pods Manifest.lock */,
 				15C40DF91CDC182600070C13 /* Sources */,
 				15C40DFA1CDC182600070C13 /* Frameworks */,
 				15C40DFB1CDC182600070C13 /* Resources */,
+				D68887F8C4DAB9FACF8AA131 /* Embed Pods Frameworks */,
+				0F23E1B17ADF1A5E6D76E4CF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -133,6 +207,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0F23E1B17ADF1A5E6D76E4CF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dictator/Pods-Dictator-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D68887F8C4DAB9FACF8AA131 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dictator/Pods-Dictator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2488769A273E19C1FE402C2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		15C40DF91CDC182600070C13 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -141,6 +263,9 @@
 				15C40E031CDC182600070C13 /* ViewController.swift in Sources */,
 				15C40E091CDC182600070C13 /* Dictator.xcdatamodeld in Sources */,
 				15C40E011CDC182600070C13 /* AppDelegate.swift in Sources */,
+				150720C31CDC425000C3ED34 /* LoginViewController.swift in Sources */,
+				150720BB1CDC3F1100C3ED34 /* PartyFormViewController.swift in Sources */,
+				15AC98741CDC4CB900DD9B88 /* DialogService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,23 +378,35 @@
 		};
 		15C40E131CDC182600070C13 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC85D8FCD2B293CFF80C0783 /* Pods-Dictator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Dictator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = erank3.Dictator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Dictator/Dictator-Bridging-Header.h";
 			};
 			name = Debug;
 		};
 		15C40E141CDC182600070C13 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D0C6E1755CA3EDFECE89F54 /* Pods-Dictator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Dictator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = erank3.Dictator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Dictator/Dictator-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -292,6 +429,7 @@
 				15C40E141CDC182600070C13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
