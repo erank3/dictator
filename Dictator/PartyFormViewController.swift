@@ -14,6 +14,20 @@ class PartyFormViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let nameRow = TextFieldRowFormer<FormTextFieldCell>().configure{ row in
+            row.placeholder = "Party Name"
+            
+        }
+        
+        let header = LabelViewFormer<FormLabelHeaderView>() { view in
+            view.titleLabel.text = "Create Your Party"
+        }
+        
+        let section = SectionFormer(rowFormer: nameRow)
+            .set(headerViewFormer: header)
+        former.append(sectionFormer: section)
+        
+        return
         let labelRow = LabelRowFormer<FormLabelCell>()
             .configure { row in
                 row.text = "Label Cell"
@@ -29,12 +43,6 @@ class PartyFormViewController: FormViewController {
             }.onValueChanged { item in
                 // Do Something
         }
-        let header = LabelViewFormer<FormLabelHeaderView>() { view in
-            view.titleLabel.text = "Label Header"
-        }
-        let section = SectionFormer(rowFormer: labelRow, inlinePickerRow)
-            .set(headerViewFormer: header)
-        former.append(sectionFormer: section)
     }
 
     override func didReceiveMemoryWarning() {
