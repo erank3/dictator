@@ -13,6 +13,7 @@
 		150720C11CDC40EA00C3ED34 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 150720BE1CDC40EA00C3ED34 /* FBSDKShareKit.framework */; };
 		150720C31CDC425000C3ED34 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150720C21CDC425000C3ED34 /* LoginViewController.swift */; };
 		15AC98741CDC4CB900DD9B88 /* DialogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AC98731CDC4CB900DD9B88 /* DialogService.swift */; };
+		15AC98781CDC581800DD9B88 /* PartiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AC98771CDC581800DD9B88 /* PartiesViewController.swift */; };
 		15C40E011CDC182600070C13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C40E001CDC182600070C13 /* AppDelegate.swift */; };
 		15C40E031CDC182600070C13 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C40E021CDC182600070C13 /* ViewController.swift */; };
 		15C40E061CDC182600070C13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15C40E041CDC182600070C13 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 		150720C21CDC425000C3ED34 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		150720C41CDC433100C3ED34 /* Dictator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dictator-Bridging-Header.h"; sourceTree = "<group>"; };
 		15AC98731CDC4CB900DD9B88 /* DialogService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogService.swift; sourceTree = "<group>"; };
+		15AC98771CDC581800DD9B88 /* PartiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartiesViewController.swift; sourceTree = "<group>"; };
 		15C40DFD1CDC182600070C13 /* Dictator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dictator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15C40E001CDC182600070C13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15C40E021CDC182600070C13 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				150720BA1CDC3F1100C3ED34 /* PartyFormViewController.swift */,
+				15AC98771CDC581800DD9B88 /* PartiesViewController.swift */,
 				150720C21CDC425000C3ED34 /* LoginViewController.swift */,
 			);
 			name = ViewControllers;
@@ -260,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15AC98781CDC581800DD9B88 /* PartiesViewController.swift in Sources */,
 				15C40E031CDC182600070C13 /* ViewController.swift in Sources */,
 				15C40E091CDC182600070C13 /* Dictator.xcdatamodeld in Sources */,
 				15C40E011CDC182600070C13 /* AppDelegate.swift in Sources */,

@@ -61,5 +61,26 @@
             </objects>
             <point key="canvasLocation" x="2227" y="-508"/>
         </scene>
+        <!--Parties View Controller-->
+        <scene sceneID="1GJ-Ti-tUd">
+            <objects>
+                <viewController storyboardIdentifier="PartiesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rPK-tT-fke" customClass="PartiesViewController" customModule="Dictator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GDC-HJ-vsj"/>
+                        <viewControllerLayoutGuide type="bottom" id="stk-HY-aMa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TIv-z9-iEa">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <segue destination="NSq-vQ-KvH" kind="showDetail" identifier="addParty" id="FbI-uh-dsS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SOq-qT-d2a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2001" y="348"/>
+        </scene>
     </scenes>
 </document>

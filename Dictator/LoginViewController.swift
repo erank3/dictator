@@ -23,11 +23,15 @@ extension LoginViewController : FBSDKLoginButtonDelegate {
         }
         
         if(result.isCancelled) {
-            
             return
         }
+    
+        NSUserDefaults.standardUserDefaults().setValue(result.token.tokenString, forKey: "fbToken")
+            
         
-        print(result.token.tokenString)
+        let controller = storyboard!.instantiateViewControllerWithIdentifier("PartiesViewController")
+        self.presentViewController(controller, animated: true, completion: nil)
+
         
     }
 }
