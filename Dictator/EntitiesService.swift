@@ -38,14 +38,30 @@ class EntitiesService: NSObject {
     
         let managedContext = appDelegate.managedObjectContext
         
-        let entity =  NSEntityDescription.entityForName("Party",
+        let entity = NSEntityDescription.entityForName("Party",
                                                         inManagedObjectContext:managedContext)
         
         let p = NSManagedObject(entity: entity!,
                                      insertIntoManagedObjectContext: managedContext)
         
         p.setValue(party.name, forKey: "name")
-        p.setValue(NSSet(objects: party.members), forKey: "members")
+        
+        
+        var managedMembers: [NSManagedObject] = []
+        for member in party.members {
+            let memberEntity = NSEntityDescription.entityForName("Member",        inManagedObjectContext:managedContext)
+            
+            let memberManaged = NSManagedObject(entity: memberEntity!, insertIntoManagedObjectContext: managedContext)
+            
+            memberManaged.setValue(member.firstName, forKey: "firstName")
+            
+            managedMembers.append(memberManaged)
+        }
+        
+        p.setValue(NSSet(objects: managedMembers), forKey: "members")
+        
+        //p.setValue("test", forKey: "members")
+        
         do {
             try managedContext.save()
             currentParties.append(party)
@@ -63,8 +79,6 @@ class EntitiesService: NSObject {
         let managedContext = appDelegate.managedObjectContext
         
         let fetchRequest = NSFetchRequest(entityName: "Party")
-        
-        //3
         do {
             let results =
                 try managedContext.executeFetchRequest(fetchRequest)
@@ -73,6 +87,12 @@ class EntitiesService: NSObject {
                 for mp in managedParties {
                     if let name = mp.valueForKey("name") as? String {
                         self.currentParties.append(PartyModel(name: name))
+                    }
+                    
+                    if let members = mp.valueForKey("members") as? NSSet {
+                        for member in members {
+                            print(member)
+                        }
                     }
                 }
                 

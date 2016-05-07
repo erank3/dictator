@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class PartyModel: NSObject {
 
@@ -16,6 +17,7 @@ class PartyModel: NSObject {
     override init() {
         
     }
+    
     init(name: String) {
         self.name = name
     }

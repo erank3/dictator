@@ -5,11 +5,11 @@
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Party" syncable="YES">
+        <attribute name="members" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="members" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Member" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Party" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="Party" positionX="-63" positionY="-18" width="128" height="73"/>
         <element name="Member" positionX="288" positionY="-72" width="128" height="75"/>
     </elements>
 </model>

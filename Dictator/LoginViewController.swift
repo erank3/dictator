@@ -38,14 +38,27 @@ extension LoginViewController : FBSDKLoginButtonDelegate {
 
 class LoginViewController: UIViewController {
 
+    func skipBtnDidTap(sender: UIButton) {
+        let controller = storyboard!.instantiateViewControllerWithIdentifier("PartiesViewController")
+        self.presentViewController(controller, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         let loginButton = FBSDKLoginButton()
         loginButton.readPermissions = ["public_profile", "email", "user_friends", "read_custom_friendlists"]
         loginButton.delegate = self
         self.view.addSubview(loginButton)
         loginButton.anchorAndFillEdge(.Bottom, xPad: 10, yPad: 100, otherSize: 50)
-
+        
+        let skipBtn = UIButton()
+        skipBtn.backgroundColor = UIColor.redColor()
+        skipBtn.tintColor = UIColor.redColor()
+        skipBtn.setTitle("Skip", forState: .Normal)
+        skipBtn.addTarget(self, action: #selector(skipBtnDidTap), forControlEvents: .TouchUpInside)
+        self.view.addSubview(skipBtn)
+        skipBtn.anchorToEdge(.Bottom, padding: 40, width: 100, height: 30)
     }
 }
