@@ -10,6 +10,13 @@ import UIKit
 
 class PartyModel: NSObject {
 
-    var name: String?
+    var name: String = "New Party"
     var members: [MemberModel] = []
+    
+    override init() {
+        
+    }
+    init(name: String) {
+        self.name = name
+    }
 }

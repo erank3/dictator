@@ -45,7 +45,7 @@ class EntitiesService: NSObject {
                                      insertIntoManagedObjectContext: managedContext)
         
         p.setValue(party.name, forKey: "name")
-        
+        p.setValue(NSSet(objects: party.members), forKey: "members")
         do {
             try managedContext.save()
             currentParties.append(party)
@@ -55,4 +55,33 @@ class EntitiesService: NSObject {
         
     }
 
+    override init() {
+    
+        let appDelegate =
+            UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Party")
+        
+        //3
+        do {
+            let results =
+                try managedContext.executeFetchRequest(fetchRequest)
+            if let managedParties = results as? [NSManagedObject] {
+            
+                for mp in managedParties {
+                    if let name = mp.valueForKey("name") as? String {
+                        self.currentParties.append(PartyModel(name: name))
+                    }
+                }
+                
+            }
+            
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+    }
+    
 }

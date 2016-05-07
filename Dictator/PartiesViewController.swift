@@ -104,6 +104,6 @@ class PartiesViewController: SAParallaxViewController {
         
         view.addSubview(addPartyBtn)
         
-        addPartyBtn.anchorToEdge(.Bottom, padding: 50, width: 50, height: 50)
+        addPartyBtn.anchorInCorner(.BottomRight, xPad: 30, yPad: 50, width: 50, height: 50)
     }
 }
