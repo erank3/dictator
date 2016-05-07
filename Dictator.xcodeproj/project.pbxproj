@@ -12,10 +12,16 @@
 		150720C01CDC40EA00C3ED34 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 150720BD1CDC40EA00C3ED34 /* FBSDKLoginKit.framework */; };
 		150720C11CDC40EA00C3ED34 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 150720BE1CDC40EA00C3ED34 /* FBSDKShareKit.framework */; };
 		150720C31CDC425000C3ED34 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150720C21CDC425000C3ED34 /* LoginViewController.swift */; };
+		152BF96D1CDD34A6000A6D3B /* ContactsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152BF96C1CDD34A6000A6D3B /* ContactsService.swift */; };
 		15AC98741CDC4CB900DD9B88 /* DialogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AC98731CDC4CB900DD9B88 /* DialogService.swift */; };
 		15AC98781CDC581800DD9B88 /* PartiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AC98771CDC581800DD9B88 /* PartiesViewController.swift */; };
+		15AC987B1CDCF7DA00DD9B88 /* EntitiesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AC987A1CDCF7DA00DD9B88 /* EntitiesService.swift */; };
+		15AC987E1CDCF81700DD9B88 /* PartyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AC987D1CDCF81700DD9B88 /* PartyModel.swift */; };
+		15AC98801CDCF83700DD9B88 /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AC987F1CDCF83700DD9B88 /* MemberModel.swift */; };
+		15AC98821CDD014700DD9B88 /* MembersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AC98811CDD014700DD9B88 /* MembersTableViewController.swift */; };
+		15AC98841CDD016500DD9B88 /* MemberViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AC98831CDD016500DD9B88 /* MemberViewCell.swift */; };
+		15AC98861CDD018B00DD9B88 /* FacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AC98851CDD018B00DD9B88 /* FacebookService.swift */; };
 		15C40E011CDC182600070C13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C40E001CDC182600070C13 /* AppDelegate.swift */; };
-		15C40E031CDC182600070C13 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C40E021CDC182600070C13 /* ViewController.swift */; };
 		15C40E061CDC182600070C13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15C40E041CDC182600070C13 /* Main.storyboard */; };
 		15C40E091CDC182600070C13 /* Dictator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15C40E071CDC182600070C13 /* Dictator.xcdatamodeld */; };
 		15C40E0B1CDC182600070C13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15C40E0A1CDC182600070C13 /* Assets.xcassets */; };
@@ -31,11 +37,17 @@
 		150720BE1CDC40EA00C3ED34 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		150720C21CDC425000C3ED34 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		150720C41CDC433100C3ED34 /* Dictator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dictator-Bridging-Header.h"; sourceTree = "<group>"; };
+		152BF96C1CDD34A6000A6D3B /* ContactsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsService.swift; sourceTree = "<group>"; };
 		15AC98731CDC4CB900DD9B88 /* DialogService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogService.swift; sourceTree = "<group>"; };
 		15AC98771CDC581800DD9B88 /* PartiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartiesViewController.swift; sourceTree = "<group>"; };
+		15AC987A1CDCF7DA00DD9B88 /* EntitiesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntitiesService.swift; sourceTree = "<group>"; };
+		15AC987D1CDCF81700DD9B88 /* PartyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartyModel.swift; sourceTree = "<group>"; };
+		15AC987F1CDCF83700DD9B88 /* MemberModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
+		15AC98811CDD014700DD9B88 /* MembersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembersTableViewController.swift; sourceTree = "<group>"; };
+		15AC98831CDD016500DD9B88 /* MemberViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberViewCell.swift; sourceTree = "<group>"; };
+		15AC98851CDD018B00DD9B88 /* FacebookService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookService.swift; sourceTree = "<group>"; };
 		15C40DFD1CDC182600070C13 /* Dictator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dictator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15C40E001CDC182600070C13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		15C40E021CDC182600070C13 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		15C40E051CDC182600070C13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		15C40E081CDC182600070C13 /* Dictator.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Dictator.xcdatamodel; sourceTree = "<group>"; };
 		15C40E0A1CDC182600070C13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -66,6 +78,8 @@
 				150720BA1CDC3F1100C3ED34 /* PartyFormViewController.swift */,
 				15AC98771CDC581800DD9B88 /* PartiesViewController.swift */,
 				150720C21CDC425000C3ED34 /* LoginViewController.swift */,
+				15AC98811CDD014700DD9B88 /* MembersTableViewController.swift */,
+				15AC98831CDD016500DD9B88 /* MemberViewCell.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -73,6 +87,7 @@
 		15AC98711CDC4C8000DD9B88 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				15AC987C1CDCF80200DD9B88 /* Models */,
 				15AC98721CDC4C8F00DD9B88 /* Services */,
 				150720B91CDC3E1700C3ED34 /* ViewControllers */,
 			);
@@ -83,8 +98,20 @@
 			isa = PBXGroup;
 			children = (
 				15AC98731CDC4CB900DD9B88 /* DialogService.swift */,
+				15AC987A1CDCF7DA00DD9B88 /* EntitiesService.swift */,
+				15AC98851CDD018B00DD9B88 /* FacebookService.swift */,
+				152BF96C1CDD34A6000A6D3B /* ContactsService.swift */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		15AC987C1CDCF80200DD9B88 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				15AC987D1CDCF81700DD9B88 /* PartyModel.swift */,
+				15AC987F1CDCF83700DD9B88 /* MemberModel.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		15C40DF41CDC182600070C13 = {
@@ -110,7 +137,6 @@
 			children = (
 				15AC98711CDC4C8000DD9B88 /* Classes */,
 				15C40E001CDC182600070C13 /* AppDelegate.swift */,
-				15C40E021CDC182600070C13 /* ViewController.swift */,
 				15C40E041CDC182600070C13 /* Main.storyboard */,
 				15C40E0A1CDC182600070C13 /* Assets.xcassets */,
 				15C40E0C1CDC182600070C13 /* LaunchScreen.storyboard */,
@@ -263,10 +289,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15AC98841CDD016500DD9B88 /* MemberViewCell.swift in Sources */,
 				15AC98781CDC581800DD9B88 /* PartiesViewController.swift in Sources */,
-				15C40E031CDC182600070C13 /* ViewController.swift in Sources */,
+				15AC987B1CDCF7DA00DD9B88 /* EntitiesService.swift in Sources */,
 				15C40E091CDC182600070C13 /* Dictator.xcdatamodeld in Sources */,
+				152BF96D1CDD34A6000A6D3B /* ContactsService.swift in Sources */,
 				15C40E011CDC182600070C13 /* AppDelegate.swift in Sources */,
+				15AC98821CDD014700DD9B88 /* MembersTableViewController.swift in Sources */,
+				15AC98801CDCF83700DD9B88 /* MemberModel.swift in Sources */,
+				15AC98861CDD018B00DD9B88 /* FacebookService.swift in Sources */,
+				15AC987E1CDCF81700DD9B88 /* PartyModel.swift in Sources */,
 				150720C31CDC425000C3ED34 /* LoginViewController.swift in Sources */,
 				150720BB1CDC3F1100C3ED34 /* PartyFormViewController.swift in Sources */,
 				15AC98741CDC4CB900DD9B88 /* DialogService.swift in Sources */,

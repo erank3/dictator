@@ -42,21 +42,10 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         let loginButton = FBSDKLoginButton()
-        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
+        loginButton.readPermissions = ["public_profile", "email", "user_friends", "read_custom_friendlists"]
         loginButton.delegate = self
         self.view.addSubview(loginButton)
         loginButton.anchorAndFillEdge(.Bottom, xPad: 10, yPad: 100, otherSize: 50)
 
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
