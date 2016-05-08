@@ -36,7 +36,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Cpu-4O-ABm" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="TKZ-20-7yY"/>
                             <constraint firstItem="Cpu-4O-ABm" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="kS0-s5-ybQ"/>

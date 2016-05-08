@@ -16,7 +16,7 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="8DC-GR-nV0"/>
                 </viewController>
@@ -49,7 +49,6 @@
         <!--Members Table View Controller-->
         <scene sceneID="e53-UV-eJB">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ys6-cJ-3dw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="equ-zF-dML" customClass="MembersTableViewController" customModule="Dictator" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="53" sectionHeaderHeight="28" sectionFooterHeight="28" id="jjH-0y-saj">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -87,6 +86,7 @@
                         </connections>
                     </tableView>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ys6-cJ-3dw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4027" y="-508"/>
         </scene>

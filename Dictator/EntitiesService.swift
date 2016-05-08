@@ -7,11 +7,29 @@
 //
 
 import UIKit
-import CoreData
+import SQLite
 
 class EntitiesService: NSObject {
     
-    private var currentParties: [PartyModel] = []
+    private var currentParties: [PartyModel]!
+    
+    private var db: Connection!
+    private var parties: Table!
+    private var partyId: Expression<Int>!
+    
+    private var member_partyId: Expression<Int>!
+
+    
+    private var partyName: Expression<String?>!
+    
+    
+    private var firstName: Expression<String?>!
+    private var lastName: Expression<String?>!
+    
+
+
+    private let members = Table("Members")
+
     
     class var sharedInstance: EntitiesService {
         struct Static {
@@ -28,78 +46,98 @@ class EntitiesService: NSObject {
 
     
     func getParties() -> [PartyModel] {
+        if currentParties == nil {
+            currentParties = []
+            do {
+                var party: PartyModel!
+                
+                for db_party in try db.prepare(parties) {
+                    party = PartyModel(id: db_party[partyId], name: db_party[partyName]!)
+                    
+                    
+                    let members_query = members.select(*)
+                        .filter(member_partyId == party.id)     // WHERE "name" IS NOT NULL
+                    
+                    for db_members in try db.prepare(members_query) {
+                        party.members.append(MemberModel(firstName: db_members[firstName]!, lastName: db_members[lastName]!))
+                    }
+                    
+                    self.currentParties.append(party)
+                }
+                
+            } catch {
+                print("error \(error)")
+            }
+            
+        }
+        
         return currentParties
     }
     
     func saveParty(party: PartyModel) {
-        
-        let appDelegate =
-            UIApplication.sharedApplication().delegate as! AppDelegate
-    
-        let managedContext = appDelegate.managedObjectContext
-        
-        let entity = NSEntityDescription.entityForName("Party",
-                                                        inManagedObjectContext:managedContext)
-        
-        let p = NSManagedObject(entity: entity!,
-                                     insertIntoManagedObjectContext: managedContext)
-        
-        p.setValue(party.name, forKey: "name")
-        
-        
-        var managedMembers: [NSManagedObject] = []
-        for member in party.members {
-            let memberEntity = NSEntityDescription.entityForName("Member",        inManagedObjectContext:managedContext)
-            
-            let memberManaged = NSManagedObject(entity: memberEntity!, insertIntoManagedObjectContext: managedContext)
-            
-            memberManaged.setValue(member.firstName, forKey: "firstName")
-            
-            managedMembers.append(memberManaged)
-        }
-        
-        p.setValue(NSSet(objects: managedMembers), forKey: "members")
-        
-        //p.setValue("test", forKey: "members")
-        
         do {
-            try managedContext.save()
             currentParties.append(party)
-        } catch let error as NSError  {
-            print("Could not save \(error), \(error.userInfo)")
+            party.id = currentParties.count
+
+            let insert = parties.insert(partyName <- party.name, partyId <- party.id)
+            try db.run(insert)
+            
+            for member in party.members {
+                let memberInsert = members.insert(firstName <- member.firstName, lastName <- member.lastName, member_partyId <- party.id)
+                
+                try db.run(memberInsert)
+            }
+        } catch {
+            
         }
-        
     }
 
-    override init() {
-    
-        let appDelegate =
-            UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext
-        
-        let fetchRequest = NSFetchRequest(entityName: "Party")
+    private func initDB() {
         do {
-            let results =
-                try managedContext.executeFetchRequest(fetchRequest)
-            if let managedParties = results as? [NSManagedObject] {
+            try db.run(parties.create { t in
+                t.column(partyId)
+                t.column(partyName)
+                })
             
-                for mp in managedParties {
-                    if let name = mp.valueForKey("name") as? String {
-                        self.currentParties.append(PartyModel(name: name))
-                    }
-                    
-                    if let members = mp.valueForKey("members") as? NSSet {
-                        for member in members {
-                            print(member)
-                        }
-                    }
-                }
-                
+            
+            let firstName = Expression<String?>("firstName")
+            let lastName = Expression<String?>("lastName")
+            
+            try db.run(members.create { t in
+                t.column(member_partyId)
+                t.column(firstName)
+                t.column(lastName)
+                })
+        } catch {
+            print("caught: \(error)")
+        }
+    }
+    
+    override init() {
+        super.init()
+        
+        let path = NSSearchPathForDirectoriesInDomains(
+            .DocumentDirectory, .UserDomainMask, true
+            ).first as String!
+        
+        self.parties = Table("Party")
+        self.partyName = Expression<String?>("name")
+        self.partyId = Expression<Int>("id")
+        
+        self.member_partyId = Expression<Int>("party_id")
+        
+        self.firstName = Expression<String?>("firstName")
+        self.lastName = Expression<String?>("lastName")
+        
+        do {
+            db = try Connection("\(path)/db.sqlite3")
+
+            if NSUserDefaults.standardUserDefaults().stringForKey("db_ready") == nil {
+                initDB()
+                NSUserDefaults.standardUserDefaults().setValue(true, forKey: "db_ready")
             }
-            
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
+        } catch {
+            print("caught: \(error)")
         }
         
     }

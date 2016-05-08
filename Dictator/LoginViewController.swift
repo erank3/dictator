@@ -54,8 +54,6 @@ class LoginViewController: UIViewController {
         loginButton.anchorAndFillEdge(.Bottom, xPad: 10, yPad: 100, otherSize: 50)
         
         let skipBtn = UIButton()
-        skipBtn.backgroundColor = UIColor.redColor()
-        skipBtn.tintColor = UIColor.redColor()
         skipBtn.setTitle("Skip", forState: .Normal)
         skipBtn.addTarget(self, action: #selector(skipBtnDidTap), forControlEvents: .TouchUpInside)
         self.view.addSubview(skipBtn)

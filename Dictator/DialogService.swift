@@ -30,31 +30,12 @@ class DialogService {
         
         let announcement = Murmur(title:message, backgroundColor: UIColor.redColor(), titleColor: UIColor.whiteColor(), font: UIFont.boldSystemFontOfSize(12))
         Whistle(announcement)
-        
-        /*
-         if let navController = parent.navigationController {
-         let message = Message(title:message, textColor: UIColor.whiteColor(), backgroundColor: UIColor.redColor())
-         Whisper(message, to: navController, action: .Show)
-         } else {
-         let announcement = Murmur(title:message, backgroundColor: UIColor.redColor(), titleColor: UIColor.whiteColor(), font: UIFont.boldSystemFontOfSize(12), duration: 2)
-         Whistle(announcement)
-         }*/
     }
     
     func showSuccess(message: String, parent: UIViewController){
         
         let announcement = Murmur(title:message, backgroundColor: UIColor.greenColor(), titleColor: UIColor.whiteColor(), font: UIFont.boldSystemFontOfSize(12))
         Whistle(announcement)
-        
-        /*
-         if let navController = parent.navigationController {
-         let message = Message(title:message, textColor: UIColor.greenColor())
-         Whisper(message, to: navController, action: .Show)
-         } else {
-         
-         let announcement = Murmur(title:message, backgroundColor: UIColor.greenColor(), titleColor: UIColor.whiteColor(), font: UIFont.boldSystemFontOfSize(12))
-         Whistle(announcement)
-         }*/
     }
     
 

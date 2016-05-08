@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class PartyModel: NSObject {
-
+    var id: Int = 0
     var name: String = "New Party"
     var members: [MemberModel] = []
     
@@ -19,6 +19,10 @@ class PartyModel: NSObject {
     }
     
     init(name: String) {
+        self.name = name
+    }
+    init(id:Int, name: String) {
+        self.id = id
         self.name = name
     }
 }
