@@ -14,15 +14,17 @@ extension EditPartyViewController: PlaceSearchDelegate {
     
     func placeDidSelected(place: PlaceModel) {
         pickPlaceBtn.setTitle(place.placeName, forState: .Normal)
+        self.currentParty.location = place.placeName
     }
 }
 
 class EditPartyViewController: SADetailViewController {
-
-    var currentParty: PartyModel!
     
     private var pickPlaceBtn: UIButton!
+    private var middleView: UIStackView!
     
+    var currentParty: PartyModel!
+
     func pickPlaceBtnDidTap(btn: UIButton) {
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let placesVC = mainStoryboard.instantiateViewControllerWithIdentifier("PlacesAutocompleteViewController") as! PlacesAutocompleteViewController
@@ -35,8 +37,13 @@ class EditPartyViewController: SADetailViewController {
             presentViewController(placesVC, animated: true, completion: nil)
         }
     }
-    
-    override func viewDidDisappear(animated: Bool) {
+
+    override func viewWillDisappear(animated: Bool) {
+        
+        UIView.animateWithDuration(0.5, animations: {
+            self.middleView.alpha = 0
+            })
+
         EntitiesService.sharedInstance.saveParty(currentParty)
     }
     
@@ -53,20 +60,34 @@ class EditPartyViewController: SADetailViewController {
         self.headerView?.addSubview(partyNameLbl)
         partyNameLbl.anchorInCenter(width: partyNameLbl.width, height: partyNameLbl.height)
         
-        let middleView = UIView()
-        middleView.backgroundColor = UIColor.blueColor()
-        
+        middleView = UIStackView()
+        middleView.axis = .Vertical
         self.view.addSubview(middleView)
         middleView.align(.UnderCentered, relativeTo: self.imageView, padding: 0, width: self.view.width, height: 1000)
         
         
+        pickPlaceBtn = UIButton()
+        pickPlaceBtn.frame = CGRectMake(0, 0, 200, 100)
+        pickPlaceBtn.contentHorizontalAlignment = .Left
+        pickPlaceBtn.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        pickPlaceBtn.titleLabel?.font = UIFont.systemFontOfSize(20)
+        pickPlaceBtn.addTarget(self, action: #selector(pickPlaceBtnDidTap), forControlEvents: .TouchUpInside)
+        
+        if let loc = self.currentParty.location where loc != "" {
+            pickPlaceBtn.setTitle(loc, forState: .Normal)
+        } else {
+            pickPlaceBtn.setTitle("Pick a place", forState: .Normal)
+        }
+        
+        
+        middleView.addArrangedSubview(pickPlaceBtn)
         
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let votersVC = mainStoryboard.instantiateViewControllerWithIdentifier("VotersViewController") as! VotersViewController
         
         votersVC.currentParty = currentParty
         self.addChildViewController(votersVC)
-        middleView.addSubview(votersVC.view)
+        middleView.addArrangedSubview(votersVC.view)
         //votersVC.view.anchorAndFillEdge(.Bottom, xPad: -15, yPad: 0, otherSize: 300)
         
        // votersVC.view.align(.UnderCentered, relativeTo: pickPlaceBtn, padding: 0, width: self.view.width, height: 300)
@@ -78,14 +99,8 @@ class EditPartyViewController: SADetailViewController {
         partyNameLbl.align(.UnderCentered, relativeTo: self.imageView, padding: 0, width: partyNameLbl.width, height: 30)
 
         
-        pickPlaceBtn = UIButton()
-        pickPlaceBtn.frame = CGRectMake(0, 0, 200, 100)
-        pickPlaceBtn.contentHorizontalAlignment = .Left
-        pickPlaceBtn.setTitle("Pick a place", forState: .Normal)
-        pickPlaceBtn.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        pickPlaceBtn.titleLabel?.font = UIFont.systemFontOfSize(20)
-        self.view.addSubview(pickPlaceBtn)
-        pickPlaceBtn.addTarget(self, action: #selector(pickPlaceBtnDidTap), forControlEvents: .TouchUpInside)
+       
+     
         pickPlaceBtn.align(.UnderMatchingLeft, relativeTo: partyNameLbl, padding: 0, width: pickPlaceBtn.width, height: 30)
 
         //partyNameLbl.anchorAndFillEdge(.Top, xPad: self.imageView.height, yPad: self.imageView.height, otherSize: 50)
