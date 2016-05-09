@@ -13,6 +13,7 @@ class PartyModel: NSObject {
     var id: Int = 0
     var name: String = "New Party"
     var members: [MemberModel] = []
+    var dictator: MemberModel?
     
     override init() {
         

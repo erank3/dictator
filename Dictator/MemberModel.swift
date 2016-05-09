@@ -13,9 +13,17 @@ class MemberModel: NSObject {
     var firstName: String = ""
     var lastName: String = ""
     
-    
     init(firstName: String, lastName:String) {
         self.firstName = firstName
         self.lastName = lastName
+    }
+    
+    override func isEqual(object: AnyObject?) -> Bool {
+        if let mem = object as? MemberModel {
+            
+            return mem.firstName == self.firstName && mem.lastName == self.lastName
+        }
+        
+        return false
     }
 }

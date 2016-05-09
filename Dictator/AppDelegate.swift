@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(self.applicationDocumentsDirectory)
         
         FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
+        GMSServices.provideAPIKey("AIzaSyAa5n8NHXjFbwtLYM5GAn414KR4BsjsgkI") // New Key
+
         
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         

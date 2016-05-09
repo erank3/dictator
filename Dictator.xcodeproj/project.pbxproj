@@ -21,6 +21,15 @@
 		15AC98821CDD014700DD9B88 /* MembersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AC98811CDD014700DD9B88 /* MembersTableViewController.swift */; };
 		15AC98841CDD016500DD9B88 /* MemberViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AC98831CDD016500DD9B88 /* MemberViewCell.swift */; };
 		15AC98861CDD018B00DD9B88 /* FacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AC98851CDD018B00DD9B88 /* FacebookService.swift */; };
+		15B6D5021CDF1F6A000827BC /* EditPartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B6D5011CDF1F6A000827BC /* EditPartyViewController.swift */; };
+		15B6D5041CDF22DB000827BC /* VotersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B6D5031CDF22DB000827BC /* VotersViewController.swift */; };
+		15B6D5061CDF23B5000827BC /* VoterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B6D5051CDF23B5000827BC /* VoterViewCell.swift */; };
+		15B6D5081CDF3A58000827BC /* PlacesAutocompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B6D5071CDF3A58000827BC /* PlacesAutocompleteViewController.swift */; };
+		15B6D50A1CDF3A8B000827BC /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B6D5091CDF3A8B000827BC /* PlaceModel.swift */; };
+		15B6D50C1CDF3AEF000827BC /* LocationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B6D50B1CDF3AEF000827BC /* LocationServices.swift */; };
+		15B6D50E1CDF3E63000827BC /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B6D50D1CDF3E63000827BC /* PlacesViewController.swift */; };
+		15B6D5101CDF3E96000827BC /* PlaceViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B6D50F1CDF3E96000827BC /* PlaceViewCell.swift */; };
+		15B6D5121CDF3F30000827BC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15B6D5111CDF3F30000827BC /* MapKit.framework */; };
 		15C40E011CDC182600070C13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C40E001CDC182600070C13 /* AppDelegate.swift */; };
 		15C40E061CDC182600070C13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15C40E041CDC182600070C13 /* Main.storyboard */; };
 		15C40E091CDC182600070C13 /* Dictator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15C40E071CDC182600070C13 /* Dictator.xcdatamodeld */; };
@@ -46,6 +55,15 @@
 		15AC98811CDD014700DD9B88 /* MembersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembersTableViewController.swift; sourceTree = "<group>"; };
 		15AC98831CDD016500DD9B88 /* MemberViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberViewCell.swift; sourceTree = "<group>"; };
 		15AC98851CDD018B00DD9B88 /* FacebookService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookService.swift; sourceTree = "<group>"; };
+		15B6D5011CDF1F6A000827BC /* EditPartyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPartyViewController.swift; sourceTree = "<group>"; };
+		15B6D5031CDF22DB000827BC /* VotersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VotersViewController.swift; sourceTree = "<group>"; };
+		15B6D5051CDF23B5000827BC /* VoterViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoterViewCell.swift; sourceTree = "<group>"; };
+		15B6D5071CDF3A58000827BC /* PlacesAutocompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesAutocompleteViewController.swift; sourceTree = "<group>"; };
+		15B6D5091CDF3A8B000827BC /* PlaceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
+		15B6D50B1CDF3AEF000827BC /* LocationServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationServices.swift; sourceTree = "<group>"; };
+		15B6D50D1CDF3E63000827BC /* PlacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
+		15B6D50F1CDF3E96000827BC /* PlaceViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceViewCell.swift; sourceTree = "<group>"; };
+		15B6D5111CDF3F30000827BC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		15C40DFD1CDC182600070C13 /* Dictator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dictator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15C40E001CDC182600070C13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15C40E051CDC182600070C13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -64,6 +82,7 @@
 			files = (
 				150720C11CDC40EA00C3ED34 /* FBSDKShareKit.framework in Frameworks */,
 				B563DB040A64FFDA4CBABB3F /* Pods_Dictator.framework in Frameworks */,
+				15B6D5121CDF3F30000827BC /* MapKit.framework in Frameworks */,
 				150720BF1CDC40EA00C3ED34 /* FBSDKCoreKit.framework in Frameworks */,
 				150720C01CDC40EA00C3ED34 /* FBSDKLoginKit.framework in Frameworks */,
 			);
@@ -80,6 +99,12 @@
 				150720C21CDC425000C3ED34 /* LoginViewController.swift */,
 				15AC98811CDD014700DD9B88 /* MembersTableViewController.swift */,
 				15AC98831CDD016500DD9B88 /* MemberViewCell.swift */,
+				15B6D5011CDF1F6A000827BC /* EditPartyViewController.swift */,
+				15B6D5031CDF22DB000827BC /* VotersViewController.swift */,
+				15B6D5051CDF23B5000827BC /* VoterViewCell.swift */,
+				15B6D5071CDF3A58000827BC /* PlacesAutocompleteViewController.swift */,
+				15B6D50D1CDF3E63000827BC /* PlacesViewController.swift */,
+				15B6D50F1CDF3E96000827BC /* PlaceViewCell.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -101,6 +126,7 @@
 				15AC987A1CDCF7DA00DD9B88 /* EntitiesService.swift */,
 				15AC98851CDD018B00DD9B88 /* FacebookService.swift */,
 				152BF96C1CDD34A6000A6D3B /* ContactsService.swift */,
+				15B6D50B1CDF3AEF000827BC /* LocationServices.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -110,6 +136,7 @@
 			children = (
 				15AC987D1CDCF81700DD9B88 /* PartyModel.swift */,
 				15AC987F1CDCF83700DD9B88 /* MemberModel.swift */,
+				15B6D5091CDF3A8B000827BC /* PlaceModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -150,6 +177,7 @@
 		7DF3E2C05E79536C276FAF81 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				15B6D5111CDF3F30000827BC /* MapKit.framework */,
 				150720BC1CDC40EA00C3ED34 /* FBSDKCoreKit.framework */,
 				150720BD1CDC40EA00C3ED34 /* FBSDKLoginKit.framework */,
 				150720BE1CDC40EA00C3ED34 /* FBSDKShareKit.framework */,
@@ -202,6 +230,11 @@
 				TargetAttributes = {
 					15C40DFC1CDC182600070C13 = {
 						CreatedOnToolsVersion = 7.3;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -294,13 +327,21 @@
 				15AC987B1CDCF7DA00DD9B88 /* EntitiesService.swift in Sources */,
 				15C40E091CDC182600070C13 /* Dictator.xcdatamodeld in Sources */,
 				152BF96D1CDD34A6000A6D3B /* ContactsService.swift in Sources */,
+				15B6D5081CDF3A58000827BC /* PlacesAutocompleteViewController.swift in Sources */,
 				15C40E011CDC182600070C13 /* AppDelegate.swift in Sources */,
+				15B6D50A1CDF3A8B000827BC /* PlaceModel.swift in Sources */,
 				15AC98821CDD014700DD9B88 /* MembersTableViewController.swift in Sources */,
+				15B6D5101CDF3E96000827BC /* PlaceViewCell.swift in Sources */,
 				15AC98801CDCF83700DD9B88 /* MemberModel.swift in Sources */,
 				15AC98861CDD018B00DD9B88 /* FacebookService.swift in Sources */,
+				15B6D5061CDF23B5000827BC /* VoterViewCell.swift in Sources */,
+				15B6D50E1CDF3E63000827BC /* PlacesViewController.swift in Sources */,
 				15AC987E1CDCF81700DD9B88 /* PartyModel.swift in Sources */,
 				150720C31CDC425000C3ED34 /* LoginViewController.swift in Sources */,
+				15B6D5041CDF22DB000827BC /* VotersViewController.swift in Sources */,
+				15B6D5021CDF1F6A000827BC /* EditPartyViewController.swift in Sources */,
 				150720BB1CDC3F1100C3ED34 /* PartyFormViewController.swift in Sources */,
+				15B6D50C1CDF3AEF000827BC /* LocationServices.swift in Sources */,
 				15AC98741CDC4CB900DD9B88 /* DialogService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

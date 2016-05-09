@@ -25,16 +25,25 @@ extension PartiesViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let parties = EntitiesService.sharedInstance.getParties()
         
-        if let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath) as? SAParallaxViewCell {
-            cell.backgroundColor = UIColor.greenColor()
-            let imageName = "food"
+        if let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath) as?
+            SAParallaxViewCell {
+            
+            for view in cell.containerView.accessoryView.subviews {
+                if let view = view as? UILabel {
+                    view.removeFromSuperview()
+                }
+            }
+            
+            let imageName = "image6"
             if let image = UIImage(named: imageName) {
+                
                 cell.setImage(image)
             }
+            
             let label = UILabel(frame: cell.containerView.accessoryView.bounds)
             label.textAlignment = .Center
-            label.text = parties[indexPath.row].name
             label.textColor = .whiteColor()
+            label.text = parties[indexPath.row].name
             label.font = .systemFontOfSize(30)
             cell.containerView.accessoryView.addSubview(label)
             
@@ -42,6 +51,24 @@ extension PartiesViewController {
         }
         
         return UICollectionViewCell()
+    }
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        super.collectionView(collectionView, didSelectItemAtIndexPath: indexPath)
+        
+        let parties = EntitiesService.sharedInstance.getParties()
+
+        if let cells = collectionView.visibleCells() as? [SAParallaxViewCell] {
+            let containerView = SATransitionContainerView(frame: view.bounds)
+            containerView.setViews(cells: cells, view: view)
+            
+            let viewController = EditPartyViewController()
+            viewController.currentParty = parties[indexPath.row]
+            viewController.transitioningDelegate = self
+            viewController.trantisionContainerView = containerView
+            
+            self.presentViewController(viewController, animated: true, completion: nil)
+        }
     }
 }
 
@@ -58,19 +85,23 @@ extension PartiesViewController {
     
     override func animationControllerForDismissedController(dismissed: UIViewController) ->
         UIViewControllerAnimatedTransitioning? {
-        transition.transitionMode = .Dismiss
-        transition.startingPoint = addPartyBtn.center
-        transition.bubbleColor = addPartyBtn.backgroundColor!
-            
-        self.collectionView.reloadData()
-            
-        return transition
+            if let _ = dismissed as? UINavigationController {
+                transition.transitionMode = .Dismiss
+                transition.startingPoint = addPartyBtn.center
+                transition.bubbleColor = addPartyBtn.backgroundColor!
+                
+                self.collectionView.reloadData()
+                
+                return transition
+            }
+            return super.animationControllerForDismissedController(dismissed)
     }
 }
 
 class PartiesViewController: SAParallaxViewController {
     
     private var addPartyBtn: UIButton!
+    
     private let transition = BubbleTransition()
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -91,8 +122,11 @@ class PartiesViewController: SAParallaxViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        LocationService.sharedInstance.lastLocation //read current location
+        
         self.addPartyBtn = UIButton(type: .Custom)
-        addPartyBtn.backgroundColor = UIColor.redColor()
+        addPartyBtn.backgroundColor = UIColor.darkGrayColor()
         addPartyBtn.frame = CGRectMake(0,0, 50, 50)
         addPartyBtn.layer.cornerRadius = 0.5 * addPartyBtn.bounds.size.width
         addPartyBtn.setTitle("+", forState: .Normal)
@@ -105,5 +139,17 @@ class PartiesViewController: SAParallaxViewController {
         view.addSubview(addPartyBtn)
         
         addPartyBtn.anchorInCorner(.BottomRight, xPad: 30, yPad: 50, width: 50, height: 50)
+    }
+    
+    convenience init() {
+        self.init(nibName: nil, bundle: nil)
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
 }
