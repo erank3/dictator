@@ -22,7 +22,6 @@ class EditPartyViewController: SADetailViewController {
     var currentParty: PartyModel!
     
     private var pickPlaceBtn: UIButton!
-
     
     func pickPlaceBtnDidTap(btn: UIButton) {
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -37,19 +36,45 @@ class EditPartyViewController: SADetailViewController {
         }
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        EntitiesService.sharedInstance.saveParty(currentParty)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.headerView?.backgroundColor = UIColor.redColor()
-
-        let headerView = UIView()
         
+
         let partyNameLbl = UILabel()
-        partyNameLbl.textColor = UIColor.redColor()
+        partyNameLbl.textColor = UIColor.whiteColor()
 
         partyNameLbl.text = currentParty.name
         partyNameLbl.font = UIFont.systemFontOfSize(24)
         partyNameLbl.sizeToFit()
-        self.view.addSubview(partyNameLbl)
+        self.headerView?.addSubview(partyNameLbl)
+        partyNameLbl.anchorInCenter(width: partyNameLbl.width, height: partyNameLbl.height)
+        
+        let middleView = UIView()
+        middleView.backgroundColor = UIColor.blueColor()
+        
+        self.view.addSubview(middleView)
+        middleView.align(.UnderCentered, relativeTo: self.imageView, padding: 0, width: self.view.width, height: 1000)
+        
+        
+        
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let votersVC = mainStoryboard.instantiateViewControllerWithIdentifier("VotersViewController") as! VotersViewController
+        
+        votersVC.currentParty = currentParty
+        self.addChildViewController(votersVC)
+        middleView.addSubview(votersVC.view)
+        //votersVC.view.anchorAndFillEdge(.Bottom, xPad: -15, yPad: 0, otherSize: 300)
+        
+       // votersVC.view.align(.UnderCentered, relativeTo: pickPlaceBtn, padding: 0, width: self.view.width, height: 300)
+        
+        
+        
+
+        return;
         partyNameLbl.align(.UnderCentered, relativeTo: self.imageView, padding: 0, width: partyNameLbl.width, height: 30)
 
         
@@ -64,20 +89,7 @@ class EditPartyViewController: SADetailViewController {
         pickPlaceBtn.align(.UnderMatchingLeft, relativeTo: partyNameLbl, padding: 0, width: pickPlaceBtn.width, height: 30)
 
         //partyNameLbl.anchorAndFillEdge(.Top, xPad: self.imageView.height, yPad: self.imageView.height, otherSize: 50)
-
-        
-        
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let votersVC = mainStoryboard.instantiateViewControllerWithIdentifier("VotersViewController") as! VotersViewController
-        
-        votersVC.currentParty = currentParty
-        self.addChildViewController(votersVC)
-        self.view.addSubview(votersVC.view)
-        //votersVC.view.anchorAndFillEdge(.Bottom, xPad: -15, yPad: 0, otherSize: 300)
-        
-        votersVC.view.align(.UnderCentered, relativeTo: pickPlaceBtn, padding: 0, width: self.view.width, height: 300)
     }
-    
     
     convenience init() {
         self.init(nibName: nil, bundle: nil)
@@ -90,7 +102,5 @@ class EditPartyViewController: SADetailViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
-
     
 }

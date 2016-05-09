@@ -54,6 +54,18 @@ class VotersViewController: UITableViewController {
             
             cell.selectionStyle = .None
             cell.nameLbl.text = "\(member.firstName) \(member.lastName)"
+    
+            if (self.currentParty.dictator == member) {
+                self.currentParty.dictator = member
+                self.dictatorCell?.accessoryView = nil
+                
+                let activeCellView = UIImageView(frame: CGRectMake(0,0,50,50))
+                activeCellView.image = UIImage(named: "Law-100")
+                cell.accessoryView = activeCellView
+                
+                self.dictatorCell = cell
+            }
+            
             return cell
         }
         

@@ -25,7 +25,7 @@ class EntitiesService: NSObject {
     
     private var firstName: Expression<String?>!
     private var lastName: Expression<String?>!
-    
+    private var isDictator: Expression<Bool?>!
 
 
     private let members = Table("Members")
@@ -59,7 +59,14 @@ class EntitiesService: NSObject {
                         .filter(member_partyId == party.id)     // WHERE "name" IS NOT NULL
                     
                     for db_members in try db.prepare(members_query) {
-                        party.members.append(MemberModel(firstName: db_members[firstName]!, lastName: db_members[lastName]!))
+                        
+                        let member = MemberModel(firstName: db_members[firstName]!, lastName: db_members[lastName]!)
+                        
+                        party.members.append(member)
+                        
+                        if(db_members[isDictator] == true) {
+                            party.dictator = member
+                        }
                     }
                     
                     self.currentParties.append(party)
@@ -76,17 +83,110 @@ class EntitiesService: NSObject {
     
     func saveParty(party: PartyModel) {
         do {
-            currentParties.append(party)
-            party.id = currentParties.count
-
-            let insert = parties.insert(partyName <- party.name, partyId <- party.id)
-            try db.run(insert)
             
-            for member in party.members {
-                let memberInsert = members.insert(firstName <- member.firstName, lastName <- member.lastName, member_partyId <- party.id)
+            if(party.id > 0) {
                 
-                try db.run(memberInsert)
+                for member in party.members {
+
+                    let member_query = members.filter(partyId == partyId && firstName == member.firstName && lastName == member.lastName)
+                    
+                    for member_db in try db.prepare(member_query) {
+                        
+                        if let dictator = party.dictator where member_db[firstName] == dictator.firstName  && member_db[lastName] == dictator.lastName {
+                            // member_db
+                            try db.run(member_query.update(isDictator <- true))
+                            
+                        } else {
+                            try db.run(member_query.update(isDictator <- false))
+                        }
+                    }
+                }
+                
+                return;
+                
+                let members_db = members.filter(partyId == partyId)
+                //let set = db.prepare(members_db.select(*))
+                
+                
+                for member_db in try db.prepare(members_db.select(*)) {
+                    print(member_db)
+                }
+
+            
+                return;
+                for member in party.members {
+                    
+                    let members_db = members.filter(partyId == partyId && firstName == member.firstName && lastName == member.lastName)
+            
+                    for member_db in try db.prepare(members_db.select(*)) {
+                        print(member_db)
+                        if let dictator = party.dictator where member_db[firstName] == member.firstName  && member_db[lastName] == member.lastName {
+                            // member_db
+                           // db.run(member_db.update(isDictator <- true))
+                            
+                        } else {
+                            //db.run(member_db.update(isDictator <- false))
+                        }
+                    }
+                    
+                    
+                    
+                    let member_db = members.select(*).filter(partyId == party.id && firstName == member.firstName && lastName == member.lastName)
+                    
+                    //print(try db.prepare(member_db)[0])
+                    if let dictator = party.dictator {
+                        print(member_db[firstName])
+                        print(member_db)
+                        
+                    }
+                    
+                    /*
+                      (member_db[firstName] == dictator.firstName) && (member_db[lastName] == dictator.lastName)
+                     
+                     
+                     
+                    if ((member_db[firstName] == party.dictator?.firstName) && () {
+                        member_db.update(isDictator <- true)
+                    } else {
+                        member_db.update(isDictator <- false)
+                    }*/
+                }
+                
+                //try db.run(memberUpdateQuery)
+
+                /*
+                var memberUpdateQuery: SQLite.Insert!
+
+                for member_db in try db.prepare(members_db) {
+                    if ((member_db[firstName] == party.dictator?.firstName) && (member_db[lastName] == party.dictator?.lastName)) {
+                        
+                          //memberUpdateQuery = member_db.update(isDictator <- true)
+                    } else {
+                        //memberUpdateQuery = member_db.update(isDictator <- false)
+                    }
+                    
+                }*/
+                
+            } else {
+                currentParties.append(party)
+                party.id = currentParties.count
+                
+                let insert = parties.insert(partyName <- party.name, partyId <- party.id)
+                try db.run(insert)
+                
+                for member in party.members {
+                    var memberInsertQuery: SQLite.Insert!
+                    
+                    if(member == party.dictator) {
+                        memberInsertQuery = members.insert(firstName <- member.firstName, lastName <- member.lastName, member_partyId <- party.id, isDictator <- true)
+                    } else {
+                        memberInsertQuery = members.insert(firstName <- member.firstName, lastName <- member.lastName, member_partyId <- party.id)
+                    }
+                    
+                    try db.run(memberInsertQuery)
+                }
             }
+
         } catch {
             
         }
@@ -107,6 +207,7 @@ class EntitiesService: NSObject {
                 t.column(member_partyId)
                 t.column(firstName)
                 t.column(lastName)
+                t.column(isDictator)
                 })
         } catch {
             print("caught: \(error)")
@@ -125,6 +226,8 @@ class EntitiesService: NSObject {
         self.partyId = Expression<Int>("id")
         
         self.member_partyId = Expression<Int>("party_id")
+        self.isDictator = Expression<Bool?>("isDictator")
+
         
         self.firstName = Expression<String?>("firstName")
         self.lastName = Expression<String?>("lastName")

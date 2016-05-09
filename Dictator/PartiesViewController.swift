@@ -121,7 +121,7 @@ class PartiesViewController: SAParallaxViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = UIColor.grayColor()
         
         LocationService.sharedInstance.lastLocation //read current location
         
