@@ -25,26 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let _ = NSUserDefaults.standardUserDefaults().stringForKey("fbToken") {
             
-            // Create content and menu controllers
-            //
-            //let navigationController = DEMONavigationController()
-            
-            //initWithRootViewController:[[DEMOHomeViewController alloc] init]];
-            //DEMOMenuViewController *menuController = [[DEMOMenuViewController alloc] initWithStyle:UITableViewStylePlain];
-            
-            // Create frosted view controller
-            //
-            //let frostedViewController = REFrostedViewController()
-            
-            //initWithContentViewController:navigationController menuViewController:menuController];
-            //frostedViewController.direction = REFrostedViewControllerDirectionLeft;
-            
-            // Make it a root controller
-            //
-            //self.window.rootViewController = frostedViewController;
-            
-            
-            
             let controller = mainStoryboard.instantiateViewControllerWithIdentifier("PartiesViewController") as! PartiesViewController
             self.window?.rootViewController = controller
             

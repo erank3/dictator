@@ -123,15 +123,16 @@ class PartiesViewController: SAParallaxViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.grayColor()
         
+        FacebookService.sharedInstance.getMe()
+        FacebookService.sharedInstance.getMeProfilePicture()
         LocationService.sharedInstance.lastLocation //read current location
         
         self.addPartyBtn = UIButton(type: .Custom)
-        addPartyBtn.backgroundColor = UIColor.darkGrayColor()
+        addPartyBtn.backgroundColor = UIColor.blackColor()
         addPartyBtn.frame = CGRectMake(0,0, 50, 50)
         addPartyBtn.layer.cornerRadius = 0.5 * addPartyBtn.bounds.size.width
         addPartyBtn.setTitle("+", forState: .Normal)
-        
-        addPartyBtn.titleLabel!.textColor = UIColor.blueColor()
+        addPartyBtn.setTitleColor(UIColor.greenColor(), forState: .Normal)
         addPartyBtn.titleLabel!.font = UIFont.systemFontOfSize(20)
         
         addPartyBtn.addTarget(self, action: #selector(thumbsUpButtonPressed), forControlEvents: .TouchUpInside)

@@ -12,6 +12,8 @@
 		150720C01CDC40EA00C3ED34 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 150720BD1CDC40EA00C3ED34 /* FBSDKLoginKit.framework */; };
 		150720C11CDC40EA00C3ED34 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 150720BE1CDC40EA00C3ED34 /* FBSDKShareKit.framework */; };
 		150720C31CDC425000C3ED34 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150720C21CDC425000C3ED34 /* LoginViewController.swift */; };
+		150B9AE51CE0EEE700E5CF54 /* ProfileImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150B9AE41CE0EEE700E5CF54 /* ProfileImageCell.swift */; };
+		150B9AE81CE0EF4100E5CF54 /* ProfileImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 150B9AE71CE0EF4100E5CF54 /* ProfileImageCell.xib */; };
 		152BF96D1CDD34A6000A6D3B /* ContactsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152BF96C1CDD34A6000A6D3B /* ContactsService.swift */; };
 		15AC98741CDC4CB900DD9B88 /* DialogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AC98731CDC4CB900DD9B88 /* DialogService.swift */; };
 		15AC98781CDC581800DD9B88 /* PartiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AC98771CDC581800DD9B88 /* PartiesViewController.swift */; };
@@ -46,6 +48,8 @@
 		150720BE1CDC40EA00C3ED34 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		150720C21CDC425000C3ED34 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		150720C41CDC433100C3ED34 /* Dictator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dictator-Bridging-Header.h"; sourceTree = "<group>"; };
+		150B9AE41CE0EEE700E5CF54 /* ProfileImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageCell.swift; sourceTree = "<group>"; };
+		150B9AE71CE0EF4100E5CF54 /* ProfileImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileImageCell.xib; sourceTree = "<group>"; };
 		152BF96C1CDD34A6000A6D3B /* ContactsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsService.swift; sourceTree = "<group>"; };
 		15AC98731CDC4CB900DD9B88 /* DialogService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogService.swift; sourceTree = "<group>"; };
 		15AC98771CDC581800DD9B88 /* PartiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartiesViewController.swift; sourceTree = "<group>"; };
@@ -98,20 +102,38 @@
 				15AC98771CDC581800DD9B88 /* PartiesViewController.swift */,
 				150720C21CDC425000C3ED34 /* LoginViewController.swift */,
 				15AC98811CDD014700DD9B88 /* MembersTableViewController.swift */,
-				15AC98831CDD016500DD9B88 /* MemberViewCell.swift */,
 				15B6D5011CDF1F6A000827BC /* EditPartyViewController.swift */,
 				15B6D5031CDF22DB000827BC /* VotersViewController.swift */,
-				15B6D5051CDF23B5000827BC /* VoterViewCell.swift */,
 				15B6D5071CDF3A58000827BC /* PlacesAutocompleteViewController.swift */,
 				15B6D50D1CDF3E63000827BC /* PlacesViewController.swift */,
-				15B6D50F1CDF3E96000827BC /* PlaceViewCell.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		150B9AE31CE0EEC100E5CF54 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				15B6D5051CDF23B5000827BC /* VoterViewCell.swift */,
+				15AC98831CDD016500DD9B88 /* MemberViewCell.swift */,
+				15B6D50F1CDF3E96000827BC /* PlaceViewCell.swift */,
+				150B9AE41CE0EEE700E5CF54 /* ProfileImageCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		150B9AE61CE0EF2500E5CF54 /* NIBs */ = {
+			isa = PBXGroup;
+			children = (
+				150B9AE71CE0EF4100E5CF54 /* ProfileImageCell.xib */,
+			);
+			name = NIBs;
 			sourceTree = "<group>";
 		};
 		15AC98711CDC4C8000DD9B88 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				150B9AE61CE0EF2500E5CF54 /* NIBs */,
+				150B9AE31CE0EEC100E5CF54 /* Cells */,
 				15AC987C1CDCF80200DD9B88 /* Models */,
 				15AC98721CDC4C8F00DD9B88 /* Services */,
 				150720B91CDC3E1700C3ED34 /* ViewControllers */,
@@ -262,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15C40E0E1CDC182600070C13 /* LaunchScreen.storyboard in Resources */,
+				150B9AE81CE0EF4100E5CF54 /* ProfileImageCell.xib in Resources */,
 				15C40E0B1CDC182600070C13 /* Assets.xcassets in Resources */,
 				15C40E061CDC182600070C13 /* Main.storyboard in Resources */,
 			);
@@ -325,6 +348,7 @@
 				15AC98841CDD016500DD9B88 /* MemberViewCell.swift in Sources */,
 				15AC98781CDC581800DD9B88 /* PartiesViewController.swift in Sources */,
 				15AC987B1CDCF7DA00DD9B88 /* EntitiesService.swift in Sources */,
+				150B9AE51CE0EEE700E5CF54 /* ProfileImageCell.swift in Sources */,
 				15C40E091CDC182600070C13 /* Dictator.xcdatamodeld in Sources */,
 				152BF96D1CDD34A6000A6D3B /* ContactsService.swift in Sources */,
 				15B6D5081CDF3A58000827BC /* PlacesAutocompleteViewController.swift in Sources */,

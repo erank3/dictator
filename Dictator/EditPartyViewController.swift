@@ -37,6 +37,13 @@ class EditPartyViewController: SADetailViewController {
             presentViewController(placesVC, animated: true, completion: nil)
         }
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        UIView.animateWithDuration(0.5, animations: {
+            self.middleView?.alpha = 1
+        })
+
+    }
 
     override func viewWillDisappear(animated: Bool) {
         
@@ -50,7 +57,6 @@ class EditPartyViewController: SADetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         let partyNameLbl = UILabel()
         partyNameLbl.textColor = UIColor.whiteColor()
 

@@ -15,6 +15,9 @@ class PartyFormViewController: FormViewController {
     var currentParty = PartyModel()
     
     private func initForm() {
+        
+       
+        
         let nameRow = TextFieldRowFormer<FormTextFieldCell>().configure{ row in
             row.placeholder = "Party Name"
             }.onTextChanged({ text in
@@ -24,18 +27,41 @@ class PartyFormViewController: FormViewController {
         let editMembersRow = LabelRowFormer<FormLabelCell>()
             .configure { row in
                 row.text = "Members"
-                row.subText = self.currentParty.members.count.description
+                row.subText = "Select group members"
             }.onSelected { row in
                 self.performSegueWithIdentifier("showMembers", sender: self)
         }
         
-        let header = LabelViewFormer<FormLabelHeaderView>() { view in
-            view.titleLabel.text = "Create Your Party"
+        
+        let createHeader: (String -> ViewFormer) = { text in
+            return LabelViewFormer<FormLabelHeaderView>()
+                .configure {
+                    $0.viewHeight = 40
+                    $0.text = text
+            }
+        }
+
+        
+        let partyInfo = SectionFormer(rowFormer: nameRow).append(rowFormer: editMembersRow)
+            .set(headerViewFormer:  createHeader("Party Info"))
+        
+        if let currentUser = FacebookService.sharedInstance.currentUser {
+            
+            let profilePicRow = LabelRowFormer<ProfileImageCell>(instantiateType: .Nib(nibName: "ProfileImageCell")) {
+                $0.iconView.image = FacebookService.sharedInstance.currentUserPhoto
+                }.configure {
+                    $0.text = "\(currentUser.firstName) \(currentUser.lastName)"
+                    $0.rowHeight = 60
+            }
+            
+             let adminInfo = SectionFormer(rowFormer: profilePicRow).set(headerViewFormer: createHeader("Group Admin"))
+            
+            former.append(sectionFormer:adminInfo, partyInfo)
+        } else {
+            former.append(sectionFormer:partyInfo)
         }
         
-        let section = SectionFormer(rowFormer: nameRow).append(rowFormer: editMembersRow)
-            .set(headerViewFormer: header)
-        former.append(sectionFormer: section)
+       
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -66,20 +92,20 @@ class PartyFormViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let closeBtn = UIButton(frame: CGRectMake(0,0,20,30))
+        let closeBtn = UIButton(frame: CGRectMake(0,0,60,30))
         closeBtn.addTarget(self, action: #selector(closeBtnDidTap), forControlEvents: .TouchUpInside)
-        closeBtn.backgroundColor = UIColor.redColor()
         closeBtn.setTitle("Cancel", forState: .Normal)
+        closeBtn.setTitleColor(self.view.tintColor, forState: .Normal)
         let closeNavBtn = UIBarButtonItem(customView: closeBtn)
-        self.navigationItem.setLeftBarButtonItems([closeNavBtn, UIBarButtonItem(customView: UIView(frame: CGRectMake(0,0,20,30)))], animated: true)
+        self.navigationItem.setLeftBarButtonItems([closeNavBtn, UIBarButtonItem(customView: UIView(frame: CGRectMake(0,0,60,30)))], animated: true)
         
         
-        let saveBtn = UIButton(frame: CGRectMake(0,0,20,30))
+        let saveBtn = UIButton(frame: CGRectMake(0,0,50,30))
         saveBtn.addTarget(self, action: #selector(saveBtnDidTap), forControlEvents: .TouchUpInside)
-        saveBtn.backgroundColor = UIColor.greenColor()
-        saveBtn.setTitle("Cancel", forState: .Normal)
+        saveBtn.setTitle("Save", forState: .Normal)
+        saveBtn.setTitleColor(self.view.tintColor, forState: .Normal)
         let saveNavBtn = UIBarButtonItem(customView: saveBtn)
-        self.navigationItem.setRightBarButtonItems([saveNavBtn, UIBarButtonItem(customView: UIView(frame: CGRectMake(0,0,20,30)))], animated: true)
+        self.navigationItem.setRightBarButtonItems([saveNavBtn, UIBarButtonItem(customView: UIView(frame: CGRectMake(0,0,50,30)))], animated: true)
         
         initForm()
 
