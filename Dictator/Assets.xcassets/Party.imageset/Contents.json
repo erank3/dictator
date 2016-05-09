@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "food.jpeg",
+      "filename" : "bbb.jpeg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "bbb-1.jpeg",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "bbb-2.jpeg",
       "scale" : "3x"
     }
   ],

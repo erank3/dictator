@@ -58,6 +58,11 @@ class EntitiesService: NSObject {
                     party = PartyModel(id: db_party[partyId], name: db_party[partyName]!)
                     party.location = db_party[partyLocation]
                     
+                    if let category = db_party[partyCategory] {
+                        party.category = category
+                    }
+                    
+                    
                     
                     let members_query = members.select(*)
                         .filter(member_partyId == party.id)     // WHERE "name" IS NOT NULL
@@ -128,7 +133,7 @@ class EntitiesService: NSObject {
             }
 
         } catch {
-            
+            print("error saving parties \(error)")
         }
     }
 
@@ -138,6 +143,7 @@ class EntitiesService: NSObject {
                 t.column(partyId)
                 t.column(partyName)
                 t.column(partyLocation)
+                t.column(partyCategory)
                 })
             
             

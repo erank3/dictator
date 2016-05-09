@@ -28,13 +28,14 @@ extension PartiesViewController {
         if let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath) as?
             SAParallaxViewCell {
             
+            let partyModel = parties[indexPath.row]
             for view in cell.containerView.accessoryView.subviews {
                 if let view = view as? UILabel {
                     view.removeFromSuperview()
                 }
             }
             
-            let imageName = "image6"
+            let imageName = partyModel.category
             if let image = UIImage(named: imageName) {
                 
                 cell.setImage(image)

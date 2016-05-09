@@ -30,6 +30,7 @@ class PartyFormViewController: FormViewController {
                 row.pickerItems = [
                 InlinePickerItem(title: "Eat"),
                 InlinePickerItem(title: "Drink"),
+                InlinePickerItem(title: "Party"),
                 InlinePickerItem(title: "Sports")
                 ]
             }.onValueChanged { item in
