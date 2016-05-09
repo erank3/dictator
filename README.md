@@ -1,1 +1,1 @@
-# dictator
+persist and manage a list of people who regularly go out to lunch together. The main function of the app is to provide a way for the group to determine the “food dictator” -- the person who gets to decide where to go for lunch -- in a fair and equitable manner, given the people who are present for lunch on that day.
