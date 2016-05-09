@@ -19,11 +19,23 @@ class PartyFormViewController: FormViewController {
        
         
         let nameRow = TextFieldRowFormer<FormTextFieldCell>().configure{ row in
-            row.placeholder = "Party Name"
+            row.placeholder = "Name"
             }.onTextChanged({ text in
                 self.currentParty.name = text
             })
         
+        let partyTypeRow = InlinePickerRowFormer<FormInlinePickerCell, Int>() {
+            $0.titleLabel.text = "Category"
+            }.configure { row in
+                row.pickerItems = [
+                InlinePickerItem(title: "Eat"),
+                InlinePickerItem(title: "Drink"),
+                InlinePickerItem(title: "Sports")
+                ]
+            }.onValueChanged { item in
+                self.currentParty.category = item.title
+        }
+
         let editMembersRow = LabelRowFormer<FormLabelCell>()
             .configure { row in
                 row.text = "Members"
@@ -31,6 +43,7 @@ class PartyFormViewController: FormViewController {
             }.onSelected { row in
                 self.performSegueWithIdentifier("showMembers", sender: self)
         }
+        
         
         
         let createHeader: (String -> ViewFormer) = { text in
@@ -42,7 +55,7 @@ class PartyFormViewController: FormViewController {
         }
 
         
-        let partyInfo = SectionFormer(rowFormer: nameRow).append(rowFormer: editMembersRow)
+        let partyInfo = SectionFormer(rowFormer: nameRow).append(rowFormer: partyTypeRow).append(rowFormer: editMembersRow)
             .set(headerViewFormer:  createHeader("Party Info"))
         
         if let currentUser = FacebookService.sharedInstance.currentUser {
@@ -91,11 +104,12 @@ class PartyFormViewController: FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         
         let closeBtn = UIButton(frame: CGRectMake(0,0,60,30))
         closeBtn.addTarget(self, action: #selector(closeBtnDidTap), forControlEvents: .TouchUpInside)
         closeBtn.setTitle("Cancel", forState: .Normal)
-        closeBtn.setTitleColor(self.view.tintColor, forState: .Normal)
+        closeBtn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         let closeNavBtn = UIBarButtonItem(customView: closeBtn)
         self.navigationItem.setLeftBarButtonItems([closeNavBtn, UIBarButtonItem(customView: UIView(frame: CGRectMake(0,0,60,30)))], animated: true)
         
@@ -103,28 +117,11 @@ class PartyFormViewController: FormViewController {
         let saveBtn = UIButton(frame: CGRectMake(0,0,50,30))
         saveBtn.addTarget(self, action: #selector(saveBtnDidTap), forControlEvents: .TouchUpInside)
         saveBtn.setTitle("Save", forState: .Normal)
-        saveBtn.setTitleColor(self.view.tintColor, forState: .Normal)
+        saveBtn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         let saveNavBtn = UIBarButtonItem(customView: saveBtn)
         self.navigationItem.setRightBarButtonItems([saveNavBtn, UIBarButtonItem(customView: UIView(frame: CGRectMake(0,0,50,30)))], animated: true)
         
         initForm()
-
-        return
-        let labelRow = LabelRowFormer<FormLabelCell>()
-            .configure { row in
-                row.text = "Label Cell"
-            }.onSelected { row in
-                // Do Something
-        }
-        let inlinePickerRow = InlinePickerRowFormer<FormInlinePickerCell, Int>() {
-            $0.titleLabel.text = "Inline Picker Cell"
-            }.configure { row in
-                row.pickerItems = (1...5).map {
-                    InlinePickerItem(title: "Option\($0)", value: Int($0))
-                }
-            }.onValueChanged { item in
-                // Do Something
-        }
     }
 
     override func didReceiveMemoryWarning() {

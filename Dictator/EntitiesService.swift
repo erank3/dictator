@@ -22,6 +22,7 @@ class EntitiesService: NSObject {
     
     private var partyName: Expression<String?>!
     private var partyLocation: Expression<String?>!
+    private var partyCategory: Expression<String?>!
 
     
     
@@ -96,7 +97,6 @@ class EntitiesService: NSObject {
                     let member_query = members.filter(partyId == partyId && firstName == member.firstName && lastName == member.lastName)
                     
                     for member_db in try db.prepare(member_query) {
-                        
                         if let dictator = party.dictator where member_db[firstName] == dictator.firstName  && member_db[lastName] == dictator.lastName {
                             // member_db
                             try db.run(member_query.update(isDictator <- true))
@@ -110,7 +110,8 @@ class EntitiesService: NSObject {
                 currentParties.append(party)
                 party.id = currentParties.count
                 
-                let insert = parties.insert(partyName <- party.name, partyId <- party.id)
+                let insert = parties.insert(partyName <- party.name, partyId <- party.id, partyCategory <- party.category)
+                
                 try db.run(insert)
                 
                 for member in party.members {
@@ -165,6 +166,7 @@ class EntitiesService: NSObject {
         self.partyName = Expression<String?>("name")
         self.partyId = Expression<Int>("id")
         self.partyLocation = Expression<String?>("location")
+        self.partyCategory = Expression<String?>("category")
         
         self.member_partyId = Expression<Int>("party_id")
         self.isDictator = Expression<Bool?>("isDictator")

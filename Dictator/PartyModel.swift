@@ -14,6 +14,7 @@ class PartyModel: NSObject {
     var name: String = "New Party"
     var members: [MemberModel] = []
     var dictator: MemberModel?
+    var category: String?
     var location: String?
     
     override init() {
