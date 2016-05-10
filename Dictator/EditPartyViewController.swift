@@ -54,7 +54,20 @@ class EditPartyViewController: SADetailViewController {
     }
     
     func sendBtnDidTap(btn: UIButton) {
-        let alert = UIAlertController(title: "Message sent to 5 members", message: "Dictator has decided", preferredStyle: UIAlertControllerStyle.Alert)
+        var message: String, title = "Oops"
+        
+        if self .currentParty.location == nil {
+            message = "please choose a location"
+        } else if currentParty.dictator == nil {
+            message = "please select a dictator"
+        } else {
+             message  = "\(self.currentParty.dictator!.firstName)'s ruling sent to \(self.currentParty.members.count) members"
+           title = "\(self.currentParty.location!)"
+        }
+        
+        
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
