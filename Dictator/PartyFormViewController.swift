@@ -103,8 +103,13 @@ class PartyFormViewController: FormViewController {
         former.reload()
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         
         let closeBtn = UIButton(frame: CGRectMake(0,0,60,30))

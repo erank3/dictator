@@ -69,11 +69,10 @@ class EditPartyViewController: SADetailViewController {
         middleView = UIStackView()
         middleView.axis = .Vertical
         self.view.addSubview(middleView)
-        middleView.align(.UnderCentered, relativeTo: self.imageView, padding: 0, width: self.view.width, height: 1000)
-        
+        middleView.align(.UnderCentered, relativeTo: self.imageView, padding: 0, width: self.view.width, height: self.view.height - self.imageView.height)
         
         pickPlaceBtn = UIButton()
-        pickPlaceBtn.frame = CGRectMake(0, 0, 200, 100)
+        pickPlaceBtn.frame = CGRectMake(100, 0, 200, 100)
         pickPlaceBtn.contentHorizontalAlignment = .Left
         pickPlaceBtn.setTitleColor(UIColor.blackColor(), forState: .Normal)
         pickPlaceBtn.titleLabel?.font = UIFont.systemFontOfSize(20)
@@ -84,7 +83,10 @@ class EditPartyViewController: SADetailViewController {
         } else {
             pickPlaceBtn.setTitle("Pick a place", forState: .Normal)
         }
-        
+
+        pickPlaceBtn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        pickPlaceBtn.backgroundColor = self.view.tintColor
+        pickPlaceBtn.alpha = 0.9
         
         middleView.addArrangedSubview(pickPlaceBtn)
         
@@ -94,22 +96,7 @@ class EditPartyViewController: SADetailViewController {
         votersVC.currentParty = currentParty
         self.addChildViewController(votersVC)
         middleView.addArrangedSubview(votersVC.view)
-        //votersVC.view.anchorAndFillEdge(.Bottom, xPad: -15, yPad: 0, otherSize: 300)
         
-       // votersVC.view.align(.UnderCentered, relativeTo: pickPlaceBtn, padding: 0, width: self.view.width, height: 300)
-        
-        
-        
-
-        return;
-        partyNameLbl.align(.UnderCentered, relativeTo: self.imageView, padding: 0, width: partyNameLbl.width, height: 30)
-
-        
-       
-     
-        pickPlaceBtn.align(.UnderMatchingLeft, relativeTo: partyNameLbl, padding: 0, width: pickPlaceBtn.width, height: 30)
-
-        //partyNameLbl.anchorAndFillEdge(.Top, xPad: self.imageView.height, yPad: self.imageView.height, otherSize: 50)
     }
     
     convenience init() {
