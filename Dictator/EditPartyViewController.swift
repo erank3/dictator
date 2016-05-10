@@ -13,15 +13,22 @@ import FontAwesome_swift
 
 extension EditPartyViewController: VotersViewControllerDelegate {
     func currentDictatorDidChange(dictator: MemberModel?) {
-        if let dictator = dictator {
-            partyDictatorLbl?.text = " \(String.fontAwesomeIconWithName(.Legal)) \(dictator.firstName) \(dictator.lastName)"
-        } else {
-            partyDictatorLbl?.text = " \(String.fontAwesomeIconWithName(.Legal)) Select dictator"
-        }
+        partyDictatorLbl?.removeFromSuperview()
         
-        partyDictatorLbl?.sizeToFit()
-        //partyDictatorLbl.anchorAndFillEdge(.Bottom, xPad: 0, yPad: 0, otherSize: 30)
-        self.view.layoutIfNeeded()
+        partyDictatorLbl = UILabel()
+        partyDictatorLbl.textColor = UIColor.whiteColor()
+        partyDictatorLbl.font = UIFont.fontAwesomeOfSize(20)
+        partyDictatorLbl.text = " \(String.fontAwesomeIconWithName(.Legal)) Select dictator"
+        partyDictatorLbl.backgroundColor = self.headerView?.backgroundColor
+        
+        if let dictator = currentParty.dictator {
+            partyDictatorLbl?.text = " \(String.fontAwesomeIconWithName(.Legal)) \(dictator.firstName) \(dictator.lastName)"
+        }
+        partyDictatorLbl.sizeToFit()
+        partyDictatorLbl.alpha = 0.6
+        
+        self.imageView.addSubview(partyDictatorLbl)
+        partyDictatorLbl.anchorAndFillEdge(.Bottom, xPad: 0, yPad: 0, otherSize: 30)
     }
 }
 
@@ -129,22 +136,8 @@ class EditPartyViewController: SADetailViewController {
         
         
         //dictator label
-        partyDictatorLbl = UILabel()
-        partyDictatorLbl.textColor = UIColor.whiteColor()
-        partyDictatorLbl.font = UIFont.fontAwesomeOfSize(20)
-        partyDictatorLbl.text = "  \(String.fontAwesomeIconWithName(.Legal)) Select dictator"
-        partyDictatorLbl.backgroundColor = self.headerView?.backgroundColor
-        
-        if let dictator = currentParty.dictator {
-            partyDictatorLbl?.text = " \(String.fontAwesomeIconWithName(.Legal)) \(dictator.firstName) \(dictator.lastName)"
-        }
-        partyDictatorLbl.sizeToFit()
-        partyDictatorLbl.alpha = 0.6
-        
-        self.imageView.addSubview(partyDictatorLbl)
-        partyDictatorLbl.anchorAndFillEdge(.Bottom, xPad: 0, yPad: 0, otherSize: 30)
+        self.currentDictatorDidChange(self.currentParty.dictator)
 
-        
         
         //members table
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
