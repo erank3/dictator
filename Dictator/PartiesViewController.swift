@@ -10,7 +10,7 @@ import UIKit
 import BubbleTransition
 import Neon
 import SAParallaxViewControllerSwift
-
+import FontAwesome_swift
 
 
 extension PartiesViewController {
@@ -132,9 +132,10 @@ class PartiesViewController: SAParallaxViewController {
         addPartyBtn.backgroundColor = UIColor.blackColor()
         addPartyBtn.frame = CGRectMake(0,0, 48, 48)
         addPartyBtn.layer.cornerRadius = 0.5 * addPartyBtn.bounds.size.width
-        addPartyBtn.setTitle("+", forState: .Normal)
+        addPartyBtn.titleLabel?.font = UIFont.fontAwesomeOfSize(24)
+
+        addPartyBtn.setTitle(String.fontAwesomeIconWithName(.Plus), forState: .Normal)
         addPartyBtn.setTitleColor(UIColor.greenColor(), forState: .Normal)
-        addPartyBtn.titleLabel!.font = UIFont.systemFontOfSize(24)
         
         addPartyBtn.addTarget(self, action: #selector(thumbsUpButtonPressed), forControlEvents: .TouchUpInside)
         

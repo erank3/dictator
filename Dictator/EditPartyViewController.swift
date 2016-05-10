@@ -53,6 +53,12 @@ class EditPartyViewController: SADetailViewController {
         }
     }
     
+    func sendBtnDidTap(btn: UIButton) {
+        let alert = UIAlertController(title: "Message sent to 5 members", message: "Dictator has decided", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         UIView.animateWithDuration(0.5, animations: {
             self.middleView?.alpha = 1
@@ -135,6 +141,21 @@ class EditPartyViewController: SADetailViewController {
         self.addChildViewController(votersVC)
         middleView.addArrangedSubview(votersVC.view)
         
+        
+        //send button 
+        let sendMessageBtn = UIButton()
+        sendMessageBtn.backgroundColor = UIColor.blackColor()
+        sendMessageBtn.contentHorizontalAlignment = .Center
+        sendMessageBtn.addTarget(self, action: #selector(sendBtnDidTap), forControlEvents: .TouchUpInside)
+        sendMessageBtn.titleLabel?.font = UIFont.fontAwesomeOfSize(30)
+        sendMessageBtn.setTitle("Send", forState: .Normal)
+        
+        sendMessageBtn.setTitleColor(UIColor.greenColor(), forState: .Normal)
+        
+        
+        sendMessageBtn.heightAnchor.constraintEqualToConstant(50).active = true
+
+        middleView.addArrangedSubview(sendMessageBtn)
     }
     
     convenience init() {
