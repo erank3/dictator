@@ -9,11 +9,25 @@
 import UIKit
 import SAParallaxViewControllerSwift
 import Neon
+import FontAwesome_swift
+
+extension EditPartyViewController: VotersViewControllerDelegate {
+    func currentDictatorDidChange(dictator: MemberModel?) {
+        if let dictator = dictator {
+            partyDictatorLbl?.text = " \(String.fontAwesomeIconWithName(.Legal)) \(dictator.firstName) \(dictator.lastName)"
+        } else {
+            partyDictatorLbl?.text = " \(String.fontAwesomeIconWithName(.Legal)) Select dictator"
+        }
+        
+        partyDictatorLbl?.sizeToFit()
+        //partyDictatorLbl.anchorAndFillEdge(.Bottom, xPad: 0, yPad: 0, otherSize: 30)
+        self.view.layoutIfNeeded()
+    }
+}
 
 extension EditPartyViewController: PlaceSearchDelegate {
-    
     func placeDidSelected(place: PlaceModel) {
-        pickPlaceBtn.setTitle(place.placeName, forState: .Normal)
+        pickPlaceBtn.setTitle("  \(String.fontAwesomeIconWithName(.LocationArrow)) \(place.placeName)", forState: .Normal)
         self.currentParty.location = place.placeName
     }
 }
@@ -22,6 +36,7 @@ class EditPartyViewController: SADetailViewController {
     
     private var pickPlaceBtn: UIButton!
     private var middleView: UIStackView!
+    private var partyDictatorLbl: UILabel!
     
     var currentParty: PartyModel!
 
@@ -57,42 +72,65 @@ class EditPartyViewController: SADetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //party name labael
         let partyNameLbl = UILabel()
         partyNameLbl.textColor = UIColor.whiteColor()
-
         partyNameLbl.text = currentParty.name
         partyNameLbl.font = UIFont.systemFontOfSize(24)
         partyNameLbl.sizeToFit()
         self.headerView?.addSubview(partyNameLbl)
         partyNameLbl.anchorInCenter(width: partyNameLbl.width, height: partyNameLbl.height)
         
+        //place picker button
+        pickPlaceBtn = UIButton()
+        pickPlaceBtn.frame = CGRectMake(0, self.headerView!.height, self.view.width, 30)
+        pickPlaceBtn.contentHorizontalAlignment = .Left
+        pickPlaceBtn.addTarget(self, action: #selector(pickPlaceBtnDidTap), forControlEvents: .TouchUpInside)
+        pickPlaceBtn.titleLabel?.font = UIFont.fontAwesomeOfSize(18)
+        
+        if let loc = self.currentParty.location where loc != "" {
+            pickPlaceBtn.setTitle("  \(String.fontAwesomeIconWithName(.LocationArrow)) \(loc)", forState: .Normal)
+        } else {
+            pickPlaceBtn.setTitle("  \(String.fontAwesomeIconWithName(.LocationArrow)) Select a place", forState: .Normal)
+        }
+        
+        pickPlaceBtn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        pickPlaceBtn.backgroundColor = self.view.tintColor
+        pickPlaceBtn.alpha = 0.8
+        
+        self.view.addSubview(pickPlaceBtn)
+        
+        
+        //create middle view
         middleView = UIStackView()
         middleView.axis = .Vertical
+        middleView.spacing = 0
         self.view.addSubview(middleView)
         middleView.align(.UnderCentered, relativeTo: self.imageView, padding: 0, width: self.view.width, height: self.view.height - self.imageView.height)
         
-        pickPlaceBtn = UIButton()
-        pickPlaceBtn.frame = CGRectMake(100, 0, 200, 100)
-        pickPlaceBtn.contentHorizontalAlignment = .Left
-        pickPlaceBtn.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        pickPlaceBtn.titleLabel?.font = UIFont.systemFontOfSize(20)
-        pickPlaceBtn.addTarget(self, action: #selector(pickPlaceBtnDidTap), forControlEvents: .TouchUpInside)
         
-        if let loc = self.currentParty.location where loc != "" {
-            pickPlaceBtn.setTitle(loc, forState: .Normal)
-        } else {
-            pickPlaceBtn.setTitle("Pick a place", forState: .Normal)
+        //dictator label
+        partyDictatorLbl = UILabel()
+        partyDictatorLbl.textColor = UIColor.whiteColor()
+        partyDictatorLbl.font = UIFont.fontAwesomeOfSize(20)
+        partyDictatorLbl.text = "  \(String.fontAwesomeIconWithName(.Legal)) Select dictator"
+        partyDictatorLbl.backgroundColor = self.headerView?.backgroundColor
+        
+        if let dictator = currentParty.dictator {
+            partyDictatorLbl?.text = " \(String.fontAwesomeIconWithName(.Legal)) \(dictator.firstName) \(dictator.lastName)"
         }
+        partyDictatorLbl.sizeToFit()
+        partyDictatorLbl.alpha = 0.6
+        
+        self.imageView.addSubview(partyDictatorLbl)
+        partyDictatorLbl.anchorAndFillEdge(.Bottom, xPad: 0, yPad: 0, otherSize: 30)
 
-        pickPlaceBtn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        pickPlaceBtn.backgroundColor = self.view.tintColor
-        pickPlaceBtn.alpha = 0.9
         
-        middleView.addArrangedSubview(pickPlaceBtn)
         
+        //members table
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let votersVC = mainStoryboard.instantiateViewControllerWithIdentifier("VotersViewController") as! VotersViewController
-        
+        votersVC.delegate = self
         votersVC.currentParty = currentParty
         self.addChildViewController(votersVC)
         middleView.addArrangedSubview(votersVC.view)

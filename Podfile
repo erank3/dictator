@@ -12,12 +12,13 @@ pod 'Whisper'
 pod 'SAParallaxViewControllerSwift'
 pod 'BubbleTransition', '~> 1.0.0'
 pod 'PromiseKit', :git => 'https://github.com/mxcl/PromiseKit.git', :branch => 'swift-2.0-beta5'
-pod 'REFrostedViewController', '~> 2.4'
 pod 'SQLite.swift', '~> 0.10.1'
 pod 'GoogleMaps'
 pod 'INTULocationManager'
 pod 'Dollar', '~> 5.0.0'
 pod 'Cent', '~> 5.0.0'
+pod 'FontAwesome.swift'
+
 
 end
 

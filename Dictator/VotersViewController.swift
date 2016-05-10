@@ -7,11 +7,16 @@
 //
 
 import UIKit
+protocol VotersViewControllerDelegate {
+    func currentDictatorDidChange(dictator: MemberModel?)
+}
 
 class VotersViewController: UITableViewController {
 
     private var dictatorCell: UITableViewCell?
+    
     var currentParty: PartyModel!
+    var delegate: VotersViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +49,8 @@ class VotersViewController: UITableViewController {
                 
                 self.dictatorCell = cell
             }
+            
+            self.delegate?.currentDictatorDidChange(self.currentParty.dictator)
         }
     }
     

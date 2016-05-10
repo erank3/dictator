@@ -26,11 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let controller = mainStoryboard.instantiateViewControllerWithIdentifier("PartiesViewController") as! PartiesViewController
             self.window?.rootViewController = controller
-            
-            
-            
-        } else {
-            
         }
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
